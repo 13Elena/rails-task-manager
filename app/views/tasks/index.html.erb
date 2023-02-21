@@ -1,0 +1,16 @@
+<h1>All tasks</h1>
+<%@tasks.each do |task|%>
+<ul>
+ <li><%= link_to task.title, task_path(task.id) %>
+   <p><button type="button" class="btn btn-secondary"><%= link_to "Edit ", edit_task_path(task.id) %>
+   </button>
+   <%= link_to task_path(task),
+    data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
+   <i class="fa-solid fa-trash"></i>
+   <% end %>
+   </p>
+  </li>
+</ul>
+<% end %>
+
+<%= link_to 'Create', tasks_new_path %>
